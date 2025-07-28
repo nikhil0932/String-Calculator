@@ -34,4 +34,11 @@ class StringCalculatorTest < Minitest::Test
     assert_equal 10, StringCalculator.add("1\n2\n3\n4")
     assert_equal 15, StringCalculator.add("1,2\n3,4\n5")
   end
+
+  def test_supports_custom_delimiters
+    assert_equal 3, StringCalculator.add("//;\n1;2")
+    assert_equal 6, StringCalculator.add("//|\n1|2|3")
+    assert_equal 10, StringCalculator.add("//#\n2#3#5")
+    assert_equal 15, StringCalculator.add("//x\n1x4x5x5")
+  end
 end
